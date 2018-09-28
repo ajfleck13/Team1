@@ -4,20 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>New York Times Search</title>
+    <link rel="stylesheet" href="assets/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+    
 </head>
 <body>
-    <div id = "article">
-        
+    <div class="container">
+        <div class="bg-primary text-white jumbotron text-center">
+            <h2>New York Times Search</h2>
+        </div>
+        <div class="collapseSection">
+             <form action="/action_page.php">
+                 <div class="form-group">
+                <label for="search">Search:</label>
+                <input type="text" class="form-control inputfield" id="searchTerm" placeholder="Enter search term" name="search">
+            </div>
+            <div class="form-group">
+                <label for="numberOfRecords">Number of Records to Retrieve:</label>
+                <input type="number" class="form-control inputfield" id="numberOfRecords" placeholder="Enter number of records" name="number">
+            </div>
+            <div class="form-group">
+                <label for="startYear">Start Year (Optional):</label>
+                <input type="text" class="form-control inputfield" id="startYear" placeholder="Enter start year" name="startyear">
+            </div>
+            <div class="form-group">
+                <label for="endYear">End Year (Optional):</label>
+                <input type="text" class="form-control inputfield" id="endYear" placeholder="Enter end year" name="number">
+            </div>
+            <button type="button" class="btn btn-default" id="submit">
+                <span class="glyphicon glyphicon-search">Search</span>
+            </button>
+            <button type="button" class="btn btn-default" id="clear">
+                <span class="glyphicon glyphicon-clear-results"> Clear Results</span>
+            </button>
+        </form>
+        </div>
 
+        <div id="article">
+
+        </div>
     </div>
-
-
     <script
     src="https://code.jquery.com/jquery-3.3.1.js"
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
-    <script src="api.js"></script>
+    <script src="assets/api.js"></script>
 </body>
 </html>

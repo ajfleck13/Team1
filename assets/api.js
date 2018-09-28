@@ -1,10 +1,19 @@
+const clearFields = function()
+{
+    $(".inputfield").val("");
+}
 
 const doAjax = function()
 {
-    // Built by LucyBot. www.lucybot.com
+    let searchterm = $("#searchTerm").val();
+    let startyear = $("#startYear").val();
+    let endyear = $("#endYear").val();
     let queryurl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     queryurl += '?' + $.param({
-    'api-key': "6d702c8028ce45f88310c462b981aff1"
+        'q': searchterm,
+        // 'begin-date': startyear + "0101",
+        // 'end-date' : endyear + "1231",
+        'api-key': "6d702c8028ce45f88310c462b981aff1",
     });
 
     $.ajax({
@@ -12,15 +21,16 @@ const doAjax = function()
         method: 'GET'
     }).then(function(value)
     {
-        console.log(value.response);
-      for(i=0; i<value.response.docs.length; i++){
+        $("#article").empty();
+        for(i=0; i<value.response.docs.length; i++)
+        {
           rendercard(value.response.docs[i]);
-
-      }
+        }
     })
 }
 
-doAjax();
+$("#submit").click(doAjax);
+$("#clear").click(clearFields);
 
 
 const rendercard = function(cardinfo){
