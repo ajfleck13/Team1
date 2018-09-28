@@ -21,6 +21,7 @@ const doAjax = function()
         method: 'GET'
     }).then(function(value)
     {
+        console.log(value);
         $("#article").empty();
         for(i=0; i<value.response.docs.length; i++)
         {
@@ -34,23 +35,23 @@ $("#clear").click(clearFields);
 
 
 const rendercard = function(cardinfo){
-  let card = $(`<div class = "card">`)
-  if(cardinfo.multimedia.length){
-    let pic = "https://static01.nyt.com/" + cardinfo.multimedia[0].url;
-    card.append(`<img class="cardImg" href=${pic}>`)
-        
+    let href = $(`<a href = ${cardinfo.web_url} target='_blank'>`);
+    let card = $(`<div class="card">`);
+    href.append(card);
+    if(cardinfo.multimedia.length){
+        let pic = "https://static01.nyt.com/" + cardinfo.multimedia[0].url;
+        card.append(`<img class="cardimage" src=${pic}>`)
     }
-    console.log(cardinfo.multimedia);
+
+    let textcontent = $(`<div class = "textcontent">`);
     let headline = cardinfo.headline.main;
-    
-    card.append(`<h1 class="headline">${headline}</h1>`);
-    
+    textcontent.append(`<h1 class="headline">${headline}</h1>`);
     let snippet = cardinfo.snippet;
+    textcontent.append(`<p class = "snippet">${snippet}</p>`);
 
-    card.append(`<p class = "snippet">${snippet}</p>`);
+    card.append(textcontent);
     
-    $("#article").append(card);
+    $("#article").append(href);
 }
-
 
 
