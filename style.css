@@ -1,0 +1,16 @@
+.card{
+height: 100px;
+border: 3px lightblue solid;
+background-color: lightblue;
+margin-top: 10px;
+border-radius: 15px 15px 15px 15px;
+}
+
+.headline{
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.snippet{
+    font-size: 10px;
+}
